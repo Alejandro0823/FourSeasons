@@ -44,8 +44,16 @@ class Users(db.Document):
     rol = db.IntField()
 
 
-#Rutas Login y registro
+
+##Formulario Index
 @app.route('/')
+def Index():
+    apartments = Apartments.objects.all()
+    return render_template('/Index/Index.html',apartments=apartments)
+
+
+#Rutas Login y registro
+@app.route('/login')
 def Login():
     return render_template('Login.html')
 
@@ -140,12 +148,6 @@ def ReadAllData():
 def User():
     apartments = Apartments.objects.all()
     return render_template('/User/Index.html',apartments=apartments)
-
-##Formulario Index
-@app.route('/index')
-def Index():
-    apartments = Apartments.objects.all()
-    return render_template('/Index/Index.html',apartments=apartments)
 
 
 
