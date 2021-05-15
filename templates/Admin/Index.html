@@ -1,0 +1,156 @@
+{% extends 'Shared/_layoutAdmin.html' %}
+{% block body %}
+
+
+
+
+<div class="container">
+
+
+
+    <button type="button" class="btn btn-success " data-toggle="modal" data-target="#exampleModal">
+        <i class="fas fa-plus"></i>
+        Nuevo
+    </button>
+
+
+    <div class="card-body" style="margin-top: 10px;">
+        <table id="table_id" class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                 
+                    <th>Ciudad</th>
+                    <th>Pais</th>
+                    <th>Numero de habitaciones</th>
+                    <th>Valor por noche</th>
+                    <th>Reseña del apartamento</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in apartments %}
+                <tr>
+                    
+                    <td data-name="City" class="name" data-type="text" data-pk="{{row.id}}">{{row.City}}</td>
+                    <td data-name="Country" class="name" data-type="text" data-pk="{{row.id}}">{{row.Country}}</td>
+                    <td data-name="NumRooms" class="name" data-type="text" data-pk="{{row.id}}">{{row.NumRooms}}</td>
+                    <td data-name="priceNight" class="name" data-type="text" data-pk="{{row.id}}">{{row.priceNight}}</td>
+                    <td data-name="review" class="name" data-type="text" data-pk="{{row.id}}">{{row.review}}</td>
+                    <td><a href="javascript:Delete('{{row.id}}','{{row.name}}')" class="btn btn-danger "><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-trash fa-w-14 fa-spin fa-lg" style="height: 20px;"><path fill="currentColor" d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"></path></svg> Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Apartamento</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form role="form" method="POST" action="{{url_for('RegisterApart')}}">
+
+           <div class="col-12">
+                    <label for="City" class="form-label">Ciudad</label>
+                    <input type="text" class="form-control" id="City" name="City"
+                    placeholder="Ciudad" required>
+           </div>
+
+           <div class="col-12">
+            <label for="Country" class="form-label">Pais</label>
+            <input type="text" class="form-control" id="Country" name="Country"
+                placeholder="Pais" required>
+           </div>
+
+           <div class="col-12">
+            <label for="Direction" class="form-label">Direccion</label>
+            <input type="text" class="form-control" id="Direction" name="Direction"
+                placeholder="Direccion" required>
+           </div>
+
+           <div class="col-12">
+            <label for="Ubicacion" class="form-label">Ubicacion en google maps</label>
+            <input type="url" class="form-control" id="Location" name="Location"
+                placeholder="Url ubicacion maps" required>
+           </div>
+
+           <div class="col-12">
+            <label for="NumHanitaciones" class="form-label">Numero de
+                habitaciones</label>
+            <input type="number" class="form-control" id="NumRooms" name="NumRooms"
+                placeholder="N° habitaciones" required>
+           </div>
+
+
+            <div class="col-12">
+                    <label for="formFile" class="form-label">Url Imagen destacada del apto</label>
+                    <input class="form-control" type="url" id="imgFile" name="imgFile" 
+                    placeholder="Url Imagen Destacada" required>
+            </div>
+
+            <div class="col-12">
+                <label for="formFileMultiple" class="form-label">Images del
+                    apartamento</label>
+                <input class="form-control" type="url" id="imgsFiles" name="imgsFiles"
+                   placeholder="Url Imagenes" multiple required>
+            </div>
+
+            <div class="col-12">
+                <label for="valNoche" class="form-label">Valor por noche</label>
+                <input type="number" class="form-control" id="priceNight" name="priceNight"
+                    placeholder="$ por noche" required>
+            </div>
+
+            <div class="col-12">
+                <label for="reseña">Reseña del apartamento</label>
+                <textarea class="form-control" id="review" name="review"
+                    rows="5" required></textarea>
+            </div>
+            <br>
+          <div class="col-12 modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input name="cmdsubmit" class="btn btn-success" type="submit" value="Guardar" />
+          </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+
+    $(document).ready(function () {
+        var dataTable = $('#table_id').DataTable();
+        $('#table_id').editable({
+            container: 'body',
+            selector: 'td.name',
+            url: '/updateapartment',
+            title: 'Nuevo Cambio',
+            type: 'POST',
+            validate: function (value) {
+                if ($.trim(value) == '') {
+                    return 'This field is required';
+                }
+            }
+        });
+    });
+
+    function Delete(ID, title){
+    if (confirm("Estas Seguro de Eliminar El Apartamento?")){
+        window.location.href = '/delete/' + ID;
+    }
+}   
+
+</script>
+
+{% endblock %}

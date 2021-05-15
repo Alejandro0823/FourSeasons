@@ -1,0 +1,58 @@
+{% extends 'Shared/_registerLayout.html' %}
+{% block body %}
+
+<h5 class="card-header mb-2">Registro</h5>
+<div class="card-body">
+    <form class="row g-3" method="POST" action="{{url_for('create_user')}}">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre completo"
+                    maxlength="60" required name="full_name">
+            </div>
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Ingrese su email" required
+                    name="email">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-5">
+                <label for="country" class="form-label">Pais</label>
+                <input type="text" class="form-control" id="country" maxlength="35" placeholder="Ingrese su pais"
+                    required name="country">
+            </div>
+            <div class="col-md-4">
+                <label for="city" class="form-label">Ciudad</label>
+                <input type="text" class="form-control" id="city" maxlength="35" placeholder="Ingrese su ciudad"
+                    name="city">
+            </div>
+            <div class="col-md-3">
+                <label for="userType" class="form-label">Tipo</label>
+                <select id="userType" class="form-select" name="userType">
+                    <option selected value="none">Seleccione</option>
+                    <option value="0">Administrador</option>
+                    <option value="1">Usuario</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña"
+                    maxlength="50" required name="password">
+            </div>
+            <div class="col-md-6">
+                <label for="validate_password" class="form-label">Confirmar contraseña</label>
+                <input type="password" class="form-control" id="validate_password" placeholder="Confirmar contraseña"
+                    maxlength="50" required name="validate_password">
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Crear usuario</button>
+            <a href="/" class="btn btn-warning">Ya tengo una cuenta</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

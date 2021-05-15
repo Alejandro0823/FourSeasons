@@ -1,0 +1,19 @@
+{% extends 'Shared/_registerLayout.html' %}
+{% block body %}
+<h5 class="card-header">Ingreso</h5>
+<div class="card-body">
+  <form method="POST" action="{{url_for('validate_user')}}">
+    <div class="mb-3">
+      <label for="user_email" class="form-label">Email </label>
+      <input type="email" class="form-control" id="user_email" placeholder="Ingrese su email" name="email">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+    <a href="register" class="btn btn-success">Registrate</a>
+  </form>
+</div>
+{{data}}
+{% endblock %}
