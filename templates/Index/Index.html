@@ -7,7 +7,7 @@
         {% for apto in apartments %}
         <div class="col">
             <div class="card h-100">
-                <img src="{{apto.imgFile}}" class="card-img-top" alt="No es posible mostrar fotos de esta propiedad">
+                <img src="{{apto.imgFile}}" class="card-img-top" alt="No es posible mostrar fotos de esta propiedad" style="height: 240px;">
                 <div class="card-body">
                     <h5 class="card-title">{{apto.Country}} - {{apto.City}}</h5>
                     <p class="card-text"><b>Direccion: </b> <a href="{{apto.Location}}"

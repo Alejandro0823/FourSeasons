@@ -61,10 +61,12 @@ def Login():
 def Register():
     return render_template('Register.html')
 
+@app.route('/User/SearchApart/<string:id_apatartment>/', methods=['POST','GET'])
+def SearchApart(id_apatartment):
+    apartments = Apartments.objects(id=id_apatartment).first()
+    return render_template('User/SearchApart.html', data=apartments);
+
 ##Formulario registro Apartamento Interfaz Admin
-
-
-
 @app.route('/admin')
 def Admin():
     apartments = Apartments.objects.all()
@@ -147,7 +149,7 @@ def ReadAllData():
 @app.route('/user')
 def User():
     apartments = Apartments.objects.all()
-    return render_template('/User/Index.html',apartments=apartments)
+    return render_template('/Index/Index.html',apartments=apartments)
 
 
 
