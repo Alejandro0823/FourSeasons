@@ -55,18 +55,23 @@ def Index():
 #Rutas Login y registro
 @app.route('/login')
 def Login():
-    return render_template('Login.html')
+    return render_template('LoginAndRegister/Login.html')
 
 @app.route('/register')
 def Register():
-    return render_template('Register.html')
+    return render_template('LoginAndRegister/Register.html')
 
+<<<<<<< HEAD
 @app.route('/User/SearchApart/<string:id_apatartment>/', methods=['POST','GET'])
 def SearchApart(id_apatartment):
     apartments = Apartments.objects(id=id_apatartment).first()
     return render_template('User/SearchApart.html', data=apartments);
 
 ##Formulario registro Apartamento Interfaz Admin
+=======
+##Formulario registro Apartamento Interfaz Admin
+
+>>>>>>> 738fe5f1f85b9743f0b82d7f6efa1641c61aaa3f
 @app.route('/admin')
 def Admin():
     apartments = Apartments.objects.all()
@@ -137,6 +142,25 @@ def delete(getid):
         apartments.delete() 
     return redirect('/admin')
 
+##buscar apartamento desde index
+@app.route('/SearchApart/<string:getid>', methods = ['POST','GET'])
+def SearchApart(getid):
+    
+    apartments = Apartments.objects(id=getid).first() #consultar apartamento por ID en Mongo DB
+    data = json.dumps(apartments) #se convierte el objeto del documento a JSON
+    info = json.loads(data) #se parsea el JSON para poder utilizar los campos en la vista 
+    print(info)
+    
+
+
+    if not apartments:
+        return jsonify({'error': 'data not found'})
+    else:
+        
+        print(getid)
+       
+    return render_template('/Index/Apartment.html', info=info)   
+
 
 
 ##Obtener todos los datos DB
@@ -153,7 +177,7 @@ def User():
 
 
 
-##Formulario registro usuario Interfaz Login
+##Formulario registro usuario Interfaz Admin
 
 @app.route('/create_user', methods=["POST"])
 def create_user():
@@ -174,8 +198,31 @@ def create_user():
             password = password,
             rol = int(userType))
         newUser.save()
-        return redirect(url_for('Login'))
-    return redirect(url_for('Register'))
+        return redirect(url_for('Admin'))
+    return redirect(url_for('Admin'))
+
+##Formulario registro usuario Interfaz index
+@app.route('/create_user_Index', methods=["POST"])
+def create_user_Index():
+    full_name = request.form['full_name']
+    email = request.form['email']
+    country = request.form['country']
+    city = request.form['city']
+    userType = 1
+    password = request.form['password']
+    validate_password = request.form['validate_password']
+
+    if userType!="none":
+        newUser = Users(
+            full_name=full_name,
+            email=email,
+            country = country,
+            city = city,
+            password = password,
+            rol = int(userType))
+        newUser.save()
+        return redirect(url_for('Index'))
+    return redirect(url_for('Index'))
 
 #Validar Usuario
 @app.route('/validate_user', methods=["POST"])
@@ -209,8 +256,6 @@ def validate_user():
             
                 
                 
-                
-                
                 return redirect(url_for('Admin'))
             else:
                 session['Correo'] = email
@@ -222,6 +267,9 @@ def validate_user():
         else:
             return redirect(url_for('Login'))
             print('error inesperado')
+
+
+            
 
         
 

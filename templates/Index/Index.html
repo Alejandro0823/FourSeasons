@@ -10,31 +10,28 @@
                 <img src="{{apto.imgFile}}" class="card-img-top" alt="No es posible mostrar fotos de esta propiedad" style="height: 240px;">
                 <div class="card-body">
                     <h5 class="card-title">{{apto.Country}} - {{apto.City}}</h5>
-                    <p class="card-text"><b>Direccion: </b> <a href="{{apto.Location}}"
-                            target="_blank">{{apto.Direction}}</a></p>
-                    <p class="card-text"><b>habitaciones: </b> {{apto.NumRooms}}</p>
-                    {% if apto.review %}
-                    <p class="card-text"><b>Reseña: </b> {{apto.review}}</p>
-                    {%else%}
-                    <p class="card-text"><b>Reseña: </b> este apartamento no cuenta con reseña</p>
-                    {%endif%}
                 </div>
                 <div class="card-footer">
                     <small class="text-muted"><b>Precio por noche: $</b>{{apto.priceNight}}</small>
-                    <a href="javascript:SearchApart('{{apto.id}}')" class="btn btn-primary float-end" >Ver</a>
+                    <a onclick="SearchApart('{{apto.id}}')" class="btn btn-primary float-end"> Ver</a>
                 </div>
             </div>
         </div>
         {% endfor %}
 
     </div>
-</div>
 
+    
 
 
 
 
 <script>
+    function SearchApart(ID) {
+
+        window.location.href = '/SearchApart/' + ID;
+
+    }
 </script>
 
 
