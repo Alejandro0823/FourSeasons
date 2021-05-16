@@ -49,7 +49,7 @@ class Users(db.Document):
 @app.route('/')
 def Index():
     apartments = Apartments.objects.all()
-    return render_template('/Index/Index.html',apartments=apartments)
+    return render_template('/Index/Index.html',apartments=apartments, session=session)
 
 
 #Rutas Login y registro
@@ -60,6 +60,12 @@ def Login():
 @app.route('/register')
 def Register():
     return render_template('LoginAndRegister/Register.html')
+
+#Ruta cerrar sesion
+@app.route('/CloseSession')
+def CloseSession():
+    session.clear()
+    return redirect(url_for('Index'));
 
 ##Formulario registro Apartamento Interfaz Admin
 
@@ -164,7 +170,8 @@ def ReadAllData():
 @app.route('/user')
 def User():
     apartments = Apartments.objects.all()
-    return render_template('/User/Index.html',apartments=apartments)
+    session['user'] = 'user'
+    return render_template('/Index/Index.html',apartments=apartments, session=session)
 
 
 
@@ -225,7 +232,8 @@ def validate_user():
         
         if exist == None:
             # return redirect(url_for('Login'))
-            return 'login'
+            print('No autorizado')
+            return redirect(url_for('Index'))
         else:
             if exist['rol'] == 0:
                 # session['Correo'] = email
@@ -245,19 +253,19 @@ def validate_user():
                 session['Name'] = Name[0]
                 session['Email'] = Email[0]
             
-                
-                
+                session['user'] = 'Admin'
                 return redirect(url_for('Admin'))
             else:
                 session['Correo'] = email
+                session['user'] = 'User'
                 return redirect(url_for('User'))
     except Exception as e:
         if str(e) == 'Users matching query does not exist.':
-            return redirect(url_for('Login'))
             print('usuario no valido')
+            return redirect(url_for('Index'))
         else:
-            return redirect(url_for('Login'))
             print('error inesperado')
+            return redirect(url_for('Index'))
 
 
             
