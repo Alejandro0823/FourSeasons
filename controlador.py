@@ -61,14 +61,26 @@ def Login():
 def Register():
     return render_template('LoginAndRegister/Register.html')
 
+<<<<<<< HEAD
 #Ruta cerrar sesion
 @app.route('/CloseSession')
 def CloseSession():
     session.clear()
     return redirect(url_for('Index'));
 
+=======
+<<<<<<< HEAD
+@app.route('/User/SearchApart/<string:id_apatartment>/', methods=['POST','GET'])
+def SearchApart(id_apatartment):
+    apartments = Apartments.objects(id=id_apatartment).first()
+    return render_template('User/SearchApart.html', data=apartments);
+
+##Formulario registro Apartamento Interfaz Admin
+=======
+>>>>>>> be854da90ee36faf9fe682b1d81428be7f8d4ca7
 ##Formulario registro Apartamento Interfaz Admin
 
+>>>>>>> 738fe5f1f85b9743f0b82d7f6efa1641c61aaa3f
 @app.route('/admin')
 def Admin():
     apartments = Apartments.objects.all()
@@ -170,8 +182,12 @@ def ReadAllData():
 @app.route('/user')
 def User():
     apartments = Apartments.objects.all()
+<<<<<<< HEAD
     session['user'] = 'user'
     return render_template('/Index/Index.html',apartments=apartments, session=session)
+=======
+    return render_template('/Index/Index.html',apartments=apartments)
+>>>>>>> be854da90ee36faf9fe682b1d81428be7f8d4ca7
 
 
 
