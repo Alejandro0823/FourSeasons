@@ -18,7 +18,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">FourSeasons</a>
+            <a class="navbar-brand" href="#"><i class="fas fa-wind"></i> FourSeasons <i
+                    class="fas fa-cloud-sun"></i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -53,12 +54,22 @@
                 <form class="d-flex" style="margin-right: 8%;">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                            <a class=" btn btn-danger" href="#" id="navbarDropdown" data-bs-toggle="dropdown"><i class="fas fa-box"></i>
+                            <a class=" btn btn-danger" href="#" id="navbarDropdown" data-bs-toggle="dropdown">
+                                <!-- <i class="fas fa-bars"></i> -->
+                                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="atom" role="img"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                                    class="svg-inline--fa fa-atom fa-w-14 fa-spin fa-lg" style="height: 18px;">
+                                    <path fill="currentColor"
+                                        d="M223.99908,224a32,32,0,1,0,32.00782,32A32.06431,32.06431,0,0,0,223.99908,224Zm214.172-96c-10.877-19.5-40.50979-50.75-116.27544-41.875C300.39168,34.875,267.63386,0,223.99908,0s-76.39066,34.875-97.89653,86.125C50.3369,77.375,20.706,108.5,9.82907,128-6.54984,157.375-5.17484,201.125,34.958,256-5.17484,310.875-6.54984,354.625,9.82907,384c29.13087,52.375,101.64652,43.625,116.27348,41.875C147.60842,477.125,180.36429,512,223.99908,512s76.3926-34.875,97.89652-86.125c14.62891,1.75,87.14456,10.5,116.27544-41.875C454.55,354.625,453.175,310.875,413.04017,256,453.175,201.125,454.55,157.375,438.171,128ZM63.33886,352c-4-7.25-.125-24.75,15.00391-48.25,6.87695,6.5,14.12891,12.875,21.88087,19.125,1.625,13.75,4,27.125,6.75,40.125C82.34472,363.875,67.09081,358.625,63.33886,352Zm36.88478-162.875c-7.752,6.25-15.00392,12.625-21.88087,19.125-15.12891-23.5-19.00392-41-15.00391-48.25,3.377-6.125,16.37891-11.5,37.88478-11.5,1.75,0,3.875.375,5.75.375C104.09864,162.25,101.84864,175.625,100.22364,189.125ZM223.99908,64c9.50195,0,22.25586,13.5,33.88282,37.25-11.252,3.75-22.50391,8-33.88282,12.875-11.377-4.875-22.62892-9.125-33.88283-12.875C201.74516,77.5,214.49712,64,223.99908,64Zm0,384c-9.502,0-22.25392-13.5-33.88283-37.25,11.25391-3.75,22.50587-8,33.88283-12.875C235.378,402.75,246.62994,407,257.8819,410.75,246.25494,434.5,233.501,448,223.99908,448Zm0-112a80,80,0,1,1,80-80A80.00023,80.00023,0,0,1,223.99908,336ZM384.6593,352c-3.625,6.625-19.00392,11.875-43.63479,11,2.752-13,5.127-26.375,6.752-40.125,7.75195-6.25,15.00391-12.625,21.87891-19.125C384.7843,327.25,388.6593,344.75,384.6593,352ZM369.65538,208.25c-6.875-6.5-14.127-12.875-21.87891-19.125-1.625-13.5-3.875-26.875-6.752-40.25,1.875,0,4.002-.375,5.752-.375,21.50391,0,34.50782,5.375,37.88283,11.5C388.6593,167.25,384.7843,184.75,369.65538,208.25Z"
+                                        class=""></path>
+                                </svg>
                                 Ingresar
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ModalLogin"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a></li>
-                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ModalRegistro"><i class="fas fa-user-plus"></i> Crear Cuenta</a></li>
+                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ModalLogin"><i
+                                            class="fas fa-sign-in-alt"></i> Iniciar sesión</a></li>
+                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ModalRegistro"><i
+                                            class="fas fa-user-plus"></i> Crear Cuenta</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -68,102 +79,106 @@
     </nav>
 
 
-    <!-- Modal Login -->
-    <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="ModalLogin" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesión</h5>
+                    <h5 class="modal-title" id="ModalLogin">Inicio de sesión</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="card-body">
                         <form method="POST" action="{{url_for('validate_user')}}">
-                          <div class="mb-3">
-                            <label for="user_email" class="form-label">Email </label>
-                            <input type="email" class="form-control" id="user_email" placeholder="Ingrese su email" name="email">
-                          </div>
-                          <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña" name="password">
-                          </div>
-                          <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Ingresar</button>
+                            <div class="mb-3">
+                                <label for="user_email" class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                                <input type="email" class="form-control" id="user_email" placeholder="Ingrese su email"
+                                    name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label"><i class="fas fa-key"></i> Contraseña</label>
+                                <input type="password" class="form-control" id="password"
+                                    placeholder="Ingrese su contraseña" name="password">
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>
+                                Ingresar</button>
                         </form>
-                      </div>
+                    </div>
                 </div>
-        
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#ModalRegistro" data-bs-toggle="modal"
+                        data-bs-dismiss="modal"><i class="fas fa-arrow-circle-right"></i> Crear Cuenta</button>
+                </div>
             </div>
         </div>
     </div>
-
-      <!-- Modal Registro -->
-      <div class="modal fade" id="ModalRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="ModalRegistro" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+                    <h5 class="modal-title" id="ModalRegistro">Registro de usuario</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    
                     <div class="card-body">
-                        <form class="row g-3" method="POST" action="{{url_for('create_user')}}">
+                        <form class="row g-3" method="POST" action="{{url_for('create_user_Index')}}">
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label for="name" class="form-label">Nombre completo</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre completo"
-                                        maxlength="60" required name="full_name">
+                                    <label for="name" class="form-label"><i class="fas fa-file-signature"></i> Nombre
+                                        completo</label>
+                                    <input type="text" class="form-control" id="name"
+                                        placeholder="Ingrese su nombre completo" maxlength="60" required
+                                        name="full_name">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Ingrese su email" required
-                                        name="email">
+                                    <label for="email" class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Ingrese su email"
+                                        required name="email">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-5">
-                                    <label for="country" class="form-label">Pais</label>
-                                    <input type="text" class="form-control" id="country" maxlength="35" placeholder="Ingrese su pais"
-                                        required name="country">
+                                    <label for="country" class="form-label"><i class="fas fa-globe-americas"></i>
+                                        Pais</label>
+                                    <input type="text" class="form-control" id="country" maxlength="35"
+                                        placeholder="Ingrese su pais" required name="country">
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="city" class="form-label">Ciudad</label>
-                                    <input type="text" class="form-control" id="city" maxlength="35" placeholder="Ingrese su ciudad"
-                                        name="city">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="userType" class="form-label">Tipo</label>
-                                    <select id="userType" class="form-select" name="userType">
-                                        <option selected value="none">Seleccione</option>
-                                        <option value="0">Administrador</option>
-                                        <option value="1">Usuario</option>
-                                    </select>
+                                    <label for="city" class="form-label"><i class="fas fa-city"></i> Ciudad</label>
+                                    <input type="text" class="form-control" id="city" maxlength="35"
+                                        placeholder="Ingrese su ciudad" name="city">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="password" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña"
-                                        maxlength="50" required name="password">
+                                    <label for="password" class="form-label"><i class="fas fa-key"></i>
+                                        Contraseña</label>
+                                    <input type="password" class="form-control" id="password"
+                                        placeholder="Ingrese su contraseña" maxlength="50" required name="password">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="validate_password" class="form-label">Confirmar contraseña</label>
-                                    <input type="password" class="form-control" id="validate_password" placeholder="Confirmar contraseña"
-                                        maxlength="50" required name="validate_password">
+                                    <label for="validate_password" class="form-label"><i class="fas fa-key"></i>
+                                        Confirmar contraseña</label>
+                                    <input type="password" class="form-control" id="validate_password"
+                                        placeholder="Confirmar contraseña" maxlength="50" required
+                                        name="validate_password">
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Crear usuario</button>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Registrar
+                                    Usuario</button>
                             </div>
                         </form>
                     </div>
-                    
-                    
                 </div>
-        
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#ModalLogin" data-bs-toggle="modal"
+                        data-bs-dismiss="modal"><i class="fas fa-arrow-circle-left"></i> Iniciar Sesión</button>
+                </div>
             </div>
         </div>
     </div>
+
 
 
 
@@ -172,11 +187,144 @@
 
     {% endblock %}
 
+
+
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted" style="margin-top:30px">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Company name
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Products
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Angular</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">React</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Vue</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Laravel</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Contact
+                        </h6>
+                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="#">FourSeasons</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    </div>
+
+
+
+
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
+        
 </body>
 
 </html>
