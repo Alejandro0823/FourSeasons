@@ -1,0 +1,78 @@
+{% extends 'Shared/_layoutUser.html' %}
+{% block body %}
+
+<div class="container">
+
+    <div class="card-body" style="margin-top: 10px;">
+        <table id="table_id" class="table table-striped table-hover">
+            <thead>
+                <tr>
+
+                    <th>Pais</th>
+                    <th>Ciudad</th>
+                    <th>NHabitaciones</th>
+                    <th>PrecioPorNoche</th>
+                    <th>Estado</th>
+                    <th>Ver</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in info %}
+                <tr>
+                    <td>{{row.Country}}</td>
+                    <td>{{row.City}}</td>
+                    <td>{{row.NumRooms}}</td>
+                    <td>{{row.priceNight}}</td>
+                    {% if row.Estado == 1 %}
+                    <td>Reservado</td>
+                    {%else%}
+                    <td>Disponible</td>
+                    {%endif%}
+                    <td><a href="javascript:SearchApartUsers('{{row._id['$oid']}}')" class="btn btn-success"><i
+                                class="far fa-eye"></i> Ver</td>
+                
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $(document).ready(function () {
+        var dataTable = $('#table_id').DataTable();
+        $('#table_id').editable({
+            container: 'body',
+            selector: 'td.name',
+            url: '/updateapartment',
+            title: 'Nuevo Cambio',
+            type: 'POST',
+            validate: function (value) {
+                if ($.trim(value) == '') {
+                    return 'This field is required';
+                }
+            }
+        });
+    });
+
+    function Cancelar(ID) {
+
+        if (confirm("Estas seguro de cancelar la reserva?")) {
+            window.location.href = '/cancelar/' + ID;
+        }
+    }
+
+    function SearchApartUsers(ID) {
+
+        window.location.href = '/SearchApartUsers/' + ID;
+
+    }
+
+
+</script>
+
+{% endblock %}

@@ -3,36 +3,35 @@
 <br>
 <div class="container">
     <div class="row row-cols-1 row-cols-md-3 g-4">
+
         {% for apto in apartments %}
         <div class="col">
             <div class="card h-100">
-                <img src="{{apto.imgFile}}" class="card-img-top" alt="No es posible mostrar fotos de esta propiedad" style="height: 240px;">
+                <img src="{{apto.imgFile}}" class="card-img-top" alt="No es posible mostrar fotos de esta propiedad">
                 <div class="card-body">
                     <h5 class="card-title">{{apto.Country}} - {{apto.City}}</h5>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted"><b>Precio por noche: $</b>{{apto.priceNight}}</small>
-                    <a onclick="SearchApart('{{apto.id}}')" class="btn btn-primary float-end"> Ver</a>
+                    <a onclick="SearchApartIndex('{{apto.id}}')" class="btn btn-primary float-end"><i class="far fa-eye"></i> Ver</a>
                 </div>
             </div>
         </div>
         {% endfor %}
 
     </div>
-
-    
-
+</div>
 
 
 
-<script>
-    function SearchApart(ID) {
 
-        window.location.href = '/SearchApart/' + ID;
+    <script>
+        function SearchApartIndex(ID) {
 
-    }
-</script>
+            window.location.href = '/SearchApartIndex/' + ID;
+        }
+    </script>
 
 
 
-{% endblock %}
+    {% endblock %}
